@@ -17,6 +17,7 @@ if [[ -z "$existing_keys" ]]; then
     gpg --armor --export $KEY_ID | pbcopy
     echo "Click here and paste the key in the appropriate text field: https://github.com/settings/gpg/new"
     echo "After that run: git config --global user.signingkey ${KEY_ID}"
+    git config commit.gpgsign true
 else
     echo "GPG key(s) already exists."
     gpg --list-secret-keys --keyid-format LONG
@@ -24,4 +25,5 @@ else
     echo "Next run: gpg --armor --export ${KEY_ID} | pbcopy"
     echo "Click here and paste the key in the appropriate text field: https://github.com/settings/gpg/new"
     echo "After that run: git config --global user.signingkey ${KEY_ID}"
+    git config commit.gpgsign true
 fi
